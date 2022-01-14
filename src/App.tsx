@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Input } from './components/Input';
+import { TaskList } from './components/TaskList';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -24,6 +25,7 @@ const App: FC = () => {
       <Container maxWidth="lg">
         <Box className={classes.box} >
           <Input /> 
+          <TaskList />
         </ Box> 
       </Container>
       

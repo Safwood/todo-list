@@ -14,7 +14,8 @@ const useStyles = makeStyles(() =>
           flexDirection: 'column',
           alignItems: 'center',
           minHeight: '135px',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          marginBottom: '15px'
         },
     }),
 );
