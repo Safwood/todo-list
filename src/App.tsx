@@ -1,11 +1,34 @@
+import React, { FC } from 'react';
+import { Input } from './components/Input';
+import { TaskList } from './components/TaskList';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import { makeStyles, createStyles } from '@mui/styles';
 
-function App() {
+
+const useStyles = makeStyles(() =>
+    createStyles({
+        box: {
+            padding: '30px 0',
+            height: '100vh'
+        },
+    }),
+);
+
+const App: FC = () => {
+  const classes = useStyles();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>React app</p>
-        
-      </header>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Box className={classes.box} >
+          <Input /> 
+          <TaskList />
+        </ Box> 
+      </Container>
+      
     </div>
   );
 }
