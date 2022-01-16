@@ -3,7 +3,6 @@ import Card from '@mui/material/Card';
 import { makeStyles, createStyles } from '@mui/styles';
 import { IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import './TaskCard.css';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -16,11 +15,13 @@ const useStyles = makeStyles(() =>
           alignItems: 'center',
           justifyContent: 'center'
         },
-        cardContent: {
-          flex: "1"
-        },
         closeIcon: {
           color: 'grey'
+        },
+        cardContent: {
+          flex: "1",
+          display: "flex",
+          justifyContent: "center",
         }
     }),
 );
@@ -34,12 +35,12 @@ const TaskCard: React.FC<Props> = ({task}) => {
 
   return (
     <Card className={classes.taskCard} variant="outlined">
-     <div className={'cardContent'}>
+     <div className={classes.cardContent}>
         <Typography variant="h5" >
           {task}
         </Typography>
      </div>
-     <IconButton aria-label="delete">
+        <IconButton aria-label="delete">
           <CloseIcon className={classes.closeIcon}/>
         </IconButton>
     </Card>
