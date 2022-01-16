@@ -20,7 +20,7 @@ const TaskList: React.FC = () => {
   return (
     <Box className={classes.taskList}>
       {tasks.map(({ id, content }) => {
-        return <TaskCard task={content} key={id}/>
+        return <TaskCard task={content} key={id} id={id}/>
       })}
     </Box>
   );

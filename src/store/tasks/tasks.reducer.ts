@@ -14,15 +14,15 @@ const initialState: TasksState = {
     tasks: [
         {
             id: "1",
-            content: 'study theory',
+            content: 'Study theory',
         },
         {
             id: "2",
-            content: 'read the book', 
+            content: 'Read the book', 
         },
         {
             id: "3",
-            content: 'solve codewars tasks'
+            content: 'Solve codewars tasks'
         },
     ],
 };
@@ -35,7 +35,7 @@ const tasksSlice = createSlice({
             state.tasks.push(action.payload);
         },
         removeTask: (state, action: PayloadAction<string>) => {
-            state.tasks.filter(task => task.id !== action.payload);
+            state.tasks = state.tasks.filter(task => task.id !== action.payload);
         },
     },
 });
@@ -43,4 +43,4 @@ const tasksSlice = createSlice({
 export const tasksSelector = (state: State) => state.tasks.tasks;
 
 export default tasksSlice.reducer;
-export const { addTask } = tasksSlice.actions;
+export const { addTask, removeTask } = tasksSlice.actions;
