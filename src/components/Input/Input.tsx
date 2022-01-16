@@ -34,6 +34,9 @@ const Input: React.FC = () => {
   }
 
   const handleSubmitButton = () => {
+    if(!taskText.trim()) {
+      return
+    }
     const id = nanoid(3)
     const newTask = {
       id: id,
