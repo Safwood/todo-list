@@ -38,7 +38,7 @@ const TaskCard: React.FC<Props> = ({task, id}) => {
   const dispatch = useDispatch();
 
   const handleRemoveTask = (e: React.MouseEvent) => {
-    dispatch(removeTask((e.currentTarget).id))
+    dispatch(removeTask(id))
   }
 
   return (
@@ -48,7 +48,7 @@ const TaskCard: React.FC<Props> = ({task, id}) => {
           {task}
         </Typography>
      </div>
-        <IconButton aria-label="delete" id={id} onClick={handleRemoveTask}>
+        <IconButton aria-label="delete" onClick={handleRemoveTask}>
           <CloseIcon className={classes.closeIcon}/>
         </IconButton>
     </Card>
