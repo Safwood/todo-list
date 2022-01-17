@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@mui/styles';
 import TextField from '@mui/material/TextField';
 import { Box, Button } from '@mui/material';
-
+import { useDispatch } from '../../store';
+import { addTask } from '../../store/tasks';
+import { nanoid } from 'nanoid';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -23,6 +25,27 @@ const useStyles = makeStyles(() =>
 
 const Input: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [taskText, setTaskText] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setTaskText(e.target.value)
+  }
+
+  const handleSubmitButton = () => {
+    if(!taskText.trim()) {
+      return
+    }
+    const id = nanoid(3)
+    const newTask = {
+      id: id,
+      content: taskText,
+    }
+    
+    dispatch(addTask(newTask))
+    setTaskText('')
+  }
 
   return (
     <Box
@@ -31,8 +54,8 @@ const Input: React.FC = () => {
       autoComplete="off"
       className={classes.inputContainer}
     >
-      <TextField id="outlined-basic" label="Enter task" variant="outlined" fullWidth/>
-      <Button variant="contained">Save</Button>
+      <TextField id="outlined-basic" onChange={handleInputChange} value={taskText} label="Enter task" variant="outlined" fullWidth/>
+      <Button variant="contained" onClick={handleSubmitButton}>Save</Button>
     </Box>
   );
 }

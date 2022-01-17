@@ -1,1 +1,0 @@
-export const tasksList = ['study theory', 'read the book', 'solve codewars tasks']

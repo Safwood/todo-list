@@ -3,6 +3,8 @@ import Card from '@mui/material/Card';
 import { makeStyles, createStyles } from '@mui/styles';
 import { IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useDispatch } from '../../store';
+import { removeTask } from '../../store/tasks';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -27,11 +29,17 @@ const useStyles = makeStyles(() =>
 );
 
 type Props = {
-  task: string
+  task: string,
+  id: string
 }
 
-const TaskCard: React.FC<Props> = ({task}) => {
+const TaskCard: React.FC<Props> = ({task, id}) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleRemoveTask = (e: React.MouseEvent) => {
+    dispatch(removeTask(id))
+  }
 
   return (
     <Card className={classes.taskCard} variant="outlined">
@@ -40,7 +48,7 @@ const TaskCard: React.FC<Props> = ({task}) => {
           {task}
         </Typography>
      </div>
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={handleRemoveTask}>
           <CloseIcon className={classes.closeIcon}/>
         </IconButton>
     </Card>

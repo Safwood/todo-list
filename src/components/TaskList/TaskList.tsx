@@ -1,9 +1,9 @@
 import React from 'react';
-import { tasksList } from './mock'
 import { makeStyles, createStyles } from '@mui/styles';
 import { Box } from '@mui/material';
 import { TaskCard } from '../TaskCard';
-
+import { useSelector } from '../../store'
+import { tasksSelector } from '../../store/tasks'
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -15,11 +15,12 @@ const useStyles = makeStyles(() =>
 
 const TaskList: React.FC = () => {
   const classes = useStyles();
+  const tasks = useSelector(tasksSelector);
 
   return (
     <Box className={classes.taskList}>
-      {tasksList.map((item, index) => {
-        return <TaskCard task={item} key={index}/>
+      {tasks.map(({ id, content }) => {
+        return <TaskCard task={content} key={id} id={id}/>
       })}
     </Box>
   );

@@ -28,7 +28,6 @@ const App: FC = () => {
           <TaskList />
         </ Box> 
       </Container>
-      
     </div>
   );
 }
