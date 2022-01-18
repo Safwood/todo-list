@@ -3,6 +3,7 @@ import { makeStyles, createStyles } from '@mui/styles';
 import { AppBar } from '@mui/material';
 import { Toolbar } from '@mui/material';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -19,18 +20,15 @@ const useStyles = makeStyles(() =>
 const Header: React.FC = () => {
   const classes = useStyles();
 
-  const handleTasksClick = () => {
-    
-  }
-  const handleAddressesClick = () => {
-
-  }
-
   return (
       <AppBar position="static">
         <Toolbar className={classes.headerContent}>
-          <Button color="inherit" onClick={handleTasksClick}>Tasks</Button>
-          <Button color="inherit" onClick={handleAddressesClick}>Addresses</Button>
+          <Button color="inherit" component={Link} to="/">
+            Tasks
+          </Button>
+          <Button color="inherit" component={Link} to="/addresses">
+             Addresses
+          </Button>
         </Toolbar>
       </AppBar>
   );
