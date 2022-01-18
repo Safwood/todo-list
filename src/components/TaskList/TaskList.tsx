@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@mui/styles';
-import { Box } from '@mui/material';
 import { TaskCard } from '../TaskCard';
 import { useSelector } from '../../store'
 import { tasksSelector } from '../../store/tasks'
@@ -8,7 +7,8 @@ import { tasksSelector } from '../../store/tasks'
 const useStyles = makeStyles(() =>
     createStyles({
         taskList: {
-          paddingTop: '15px',
+          padding: '15px 0 0',
+          listStyle: 'none'
         },
     }),
 );
@@ -18,11 +18,13 @@ const TaskList: React.FC = () => {
   const tasks = useSelector(tasksSelector);
 
   return (
-    <Box className={classes.taskList}>
+    <ul className={classes.taskList}>
       {tasks.map(({ id, content }) => {
-        return <TaskCard task={content} key={id} id={id}/>
+        return <li key={id}>
+                  <TaskCard task={content} id={id}/>
+              </li>
       })}
-    </Box>
+    </ul>
   );
 }
 

@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { makeStyles, createStyles } from '@mui/styles';
+import { Header } from './components/Header'
 
 
 const useStyles = makeStyles(() =>
@@ -22,6 +23,7 @@ const App: FC = () => {
   return (
     <div className="App">
       <CssBaseline />
+      <Header />
       <Container maxWidth="lg">
         <Box className={classes.box} >
           <Input /> 
