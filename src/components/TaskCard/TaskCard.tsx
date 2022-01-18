@@ -1,44 +1,42 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import { makeStyles, createStyles } from '@mui/styles';
 import { IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch } from '../../store';
 import { removeTask } from '../../store/tasks';
+import { createUseStyles } from '../../utils'
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        taskCard: {
-          width: '100%',
-          marginBottom: '15px',
-          borderRadius: '8px',
-          padding: '15px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        },
-        closeIcon: {
-          color: 'grey'
-        },
-        cardContent: {
-          flex: "1",
-          display: "flex",
-          justifyContent: "center",
-        }
-    }),
-);
+const useStyles = createUseStyles({
+  taskCard: {
+    width: '100%',
+    marginBottom: '15px',
+    borderRadius: '8px',
+    padding: '15px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  closeIcon: {
+    color: 'grey'
+  },
+  cardContent: {
+    flex: "1",
+    display: "flex",
+    justifyContent: "center",
+  }
+});
 
 type Props = {
   task: string,
-  id: string
+  taskId: string
 }
 
-const TaskCard: React.FC<Props> = ({task, id}) => {
+const TaskCard: React.FC<Props> = ({task, taskId}) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const handleRemoveTask = (e: React.MouseEvent) => {
-    dispatch(removeTask(id))
+    dispatch(removeTask(taskId))
   }
 
   return (

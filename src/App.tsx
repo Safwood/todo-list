@@ -1,33 +1,19 @@
-import React, { FC } from 'react';
-import { Input } from './components/Input';
-import { TaskList } from './components/TaskList';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { makeStyles, createStyles } from '@mui/styles';
+import { FC } from 'react';
+import { Header } from './components/Header';
+import { TasksPage } from './components/TasksPage';
+import { AddressPage } from './components/AddressPage';
+import { Routes, Route } from 'react-router-dom';
+import { Paths } from './utils';
 
-
-const useStyles = makeStyles(() =>
-    createStyles({
-        box: {
-            padding: '30px 0',
-            height: '100vh'
-        },
-    }),
-);
 
 const App: FC = () => {
-  const classes = useStyles();
-
   return (
     <div className="App">
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <Box className={classes.box} >
-          <Input /> 
-          <TaskList />
-        </ Box> 
-      </Container>
+      <Header />
+      <Routes>
+        <Route path={Paths.Tasks} element={<TasksPage />} />
+        <Route path={Paths.Addresses} element={<AddressPage />} />
+      </Routes>
     </div>
   );
 }
