@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@mui/styles';
 import TextField from '@mui/material/TextField';
 import { Box, Button } from '@mui/material';
 import { useDispatch } from '../../store';
 import { addTask } from '../../store/tasks';
 import { nanoid } from 'nanoid';
+import { createUseStyles } from '../../utils'
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        inputContainer: {
-          border: '1px solid lightgrey',
-          borderRadius: '8px',
-          padding: '15px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          minHeight: '135px',
-          justifyContent: 'space-between',
-          marginBottom: '15px'
-        },
-    }),
-);
+
+const useStyles = createUseStyles({
+  inputContainer: {
+    border: '1px solid lightgrey',
+    borderRadius: '8px',
+    padding: '15px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    minHeight: '135px',
+    justifyContent: 'space-between',
+    marginBottom: '15px',
+    width: '100%'
+  },
+});
 
 
 const Input: React.FC = () => {
